@@ -38,3 +38,13 @@ Route::get('admin/books', [App\Http\Controllers\AdminController::class, 'books']
 Route::post('admin/books', [App\Http\Controllers\AdminController::class, 'submit_book'])
     ->name('admin.book.submit')
     ->middleware('is_admin');
+// Menambah Data
+Route::patch('admin/books/update', [App\Http\Controllers\AdminController::class, 'update_book'])
+    ->name('admin.book.update')
+    ->middleware('is_admin');
+// AJAX
+Route::get('admin/ajaxadmin/dataBuku/{id}', [App\Http\Controllers\AdminController::class, 'getDataBuku']);
+// Menghapus Data
+Route::delete('admin/books/delete', [App\Http\Controllers\AdminController::class, 'delete_book'])
+    ->name('admin.book.delete')
+    ->middleware('is_admin');
