@@ -225,19 +225,20 @@ return [
 
     'menu' => [
         [
-            'text' => 'search',
+            'text'   => 'search',
             'search' => true,
             'topnav' => true,
         ],
         [
-            'text' => 'Kelola Buku',
-            'url'  => 'admin/kelola_buku',
-            'icon'  => 'far fa-fw fa-book',
-        ],
-        [
             'text' => 'blog',
             'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'can'  => 'isAdmin',
+        ],
+        [
+            'text' => 'Buku',
+            'url'  => 'admin/books',
+            'icon' => 'far fa-fw fa-book',
+            'can'  => 'isAdmin',
         ],
         [
             'text'        => 'pages',
