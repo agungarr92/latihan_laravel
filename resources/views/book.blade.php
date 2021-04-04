@@ -14,6 +14,7 @@
                     <div class="card-header">{{ __('Pengelolaan Buku')}}</div>
                     <div class="card-body">
                         <button class="btn btn-primary" data-toggle="modal" data-target="#TambahBukuModal"><i class="fa fa-plus"></i>Tambah Data</button>
+                        <a href="{{ router('admin.print.books') }}" target="_blank" class="btn btn-secondary"><i class="fa fa-print"></i>Cetak PDF</a>
                         <table id="table-data" class="table table-borderer">
                             <thead>
                                 <tr>
@@ -42,6 +43,7 @@
                                                     [Gambar tidak tersedia]
                                                 @endif
                                                 </td>
+                                                <!-- end hal 82 -->
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <button type="button" id="btn-edit-buku" class="btn btn-success" data-toggle="modal"
@@ -134,7 +136,7 @@
         </div>
     </div>
 @stop
-<!-- Content -->
+<!-- Content --> 
 @section('content')
 <div class="modal fade" id="tambahBukuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -210,15 +212,14 @@
                     },
                 });
             });
+                $(document).on('click', '#btn-delete-book', function(){
+                let id = $(this).data('id');
+                let cover = $(this).data('cover');
+
+                $('#delete-id').val(id);
+                $('#delete-old-cover').val(cover); 
         });
-
-        $(document).on('click', '#btn-delete-book', function(){
-            let id = $(this).data('id');
-            let cover = $(this).data('cover');
-
-            $('#delete-id').val(id);
-            $('#delete-old-cover').val(cover);
-        })
+    });
     </script>
 @stop
 

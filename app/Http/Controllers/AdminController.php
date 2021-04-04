@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class AdminController extends Controller
 {
@@ -100,6 +101,14 @@ class AdminController extends Controller
         $buku = Book::find($id);
 
         return response()->json($buku);
+    }
+    // Print pdf
+    public function print_books()
+    {
+        $books = Book::all();
+
+        $pdf = PDF::loadview('print_books', ['books' => $books]);
+        return $pdf->downlaod('data_buku.pdf');
     }
 
 }
